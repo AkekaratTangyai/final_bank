@@ -1,0 +1,20 @@
+{% extends "menubar.html" %}
+{% block content %}
+<h1 class="mt-5">ดูยอดเงินคงเหลือ</h1>
+{% if account %}
+    <div class="alert alert-info mt-3">
+        <p>เลขบัญชี: <br>{{ account['account_number'] }}</p>
+        <p>ชื่อจริง: <br>{{ account['username'] }}</p>
+        <p>ยอดเงินคงเหลือ: <br>{{ account['balance'] }}</p>
+    </div>
+{% else %}
+    <form method="post" class="mt-3">
+        <div class="form-group">
+            <label for="account_number">เลขบัญชี:</label>
+            <input type="text" name="account_number" class="form-control" id="account_number" required>
+        </div>
+        <button type="submit" class="btn btn-primary">ดูยอดเงินคงเหลือ</button>
+    </form>
+{% endif %}
+<a href="{{ url_for('index') }}" class="btn btn-secondary mt-3">กลับ</a>
+{% endblock %}
